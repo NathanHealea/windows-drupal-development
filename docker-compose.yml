@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  composer:
+    image: composer:latest
+    container_name: ${PROJECT_NAME}-composer
+    user: root
+    environment:
+      - COMPOSER_PROCESS_TIMEOUT=${COMPOSER_PROCESS_TIMEOUT}
+      - COMPOSER_MEMORY_LIMIT=${COMPOSER_MEMORY_LIMIT}
+    entrypoint: ['composer', 'create-project', 'drupal/recommended-project', 'drupal', '--ignore-platform-reqs']
+    volumes:
+      - ${DRUPAL_CORE_PATH}:/app/drupal
+    restart: no
+
+  drupal:
+    image:
+    container_name: ${STACK_NAME}-site
+    ports:
+      - 8080:80
+    volumes:
+      - ${DRUPAL_CORE_PATH}/web:/var/www/html
+      - ${DRUPAL_CORE_PATH}:/opt/drupal
+    depends_on:
+      - mysql
+    restart: always
+
+  mysql:
+    image: mysql:latest
+    container_name: ${STACK_NAME}-mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_USER}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - ${MYSQL_PATH}/data:/var/lib/mysql
+      - ${MYSQL_PATH}/init:/docker-entrypoint-initdb.d
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: ${STACK_NAME}-phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${PMA_USER}
+      PMA_PASSWORD: ${PMA_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - 8090:80
+    depends_on:
+      - mysql
+    restart: always
+
+networks:
+  default:
+    name: ${STACK_NAME}-network

@@ -63,7 +63,7 @@ Once the Drupal Docker stack is running you will have the following ending direc
 # Repo Branches
 
 ```
-├── main              # Minimal project files that can be applied to each drupal stack
+├── main              # Minimal project files that can be applied to each drupal stack - not development ready
 │   ├── v10           # Drupal 10 development stack - ready for development
 │   │   ├── dev       # Drupal 10 stack development
 │
