@@ -54,8 +54,8 @@ Once the Drupal Docker stack is running you will have the following ending direc
 ```
 .
 ├── drupal            # Drupal mounted volume directory containing Drupal core.
-├── mysql             # MySQL mounted volume directory containing MySQL database.   
- 
+├── mysql             # MySQL mounted volume directory containing MySQL database.
+
 ```
 
 # Environment Variables
@@ -64,7 +64,10 @@ Once the Drupal Docker stack is running you will have the following ending direc
 
 ```
 ├── main              # Minimal project files that can be applied to each drupal stack
-│   ├── drupal/v10    # Drupal 10 development stack files
-│   ├── drupal/v9     # Drupal 9 development stack files
-│   ├── drupal/8      # Drupal 8 development stack files
+│   ├── v10           # Drupal 10 development stack - ready for development
+│   │   ├── dev       # Drupal 10 stack development
+│
+│   ├── v9            # Drupal 9 development stack files - ready for development
+│
+│   ├── v8            # Drupal 8 development stack files - ready for development
 ```
