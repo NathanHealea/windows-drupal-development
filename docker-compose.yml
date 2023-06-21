@@ -1,25 +1,27 @@
-version: '3.8'
+version: '3.9'
 
 services:
   composer:
     image: composer:latest
     container_name: ${PROJECT_NAME}-composer
-    user: root
     environment:
       - COMPOSER_PROCESS_TIMEOUT=${COMPOSER_PROCESS_TIMEOUT}
       - COMPOSER_MEMORY_LIMIT=${COMPOSER_MEMORY_LIMIT}
-    entrypoint: ['composer', 'create-project', 'drupal/recommended-project', 'drupal', '--ignore-platform-reqs']
+    command: composer create-project drupal/recommended-project --ignore-platform-reqs
     volumes:
-      - ${DRUPAL_CORE_PATH}:/app/drupal
+      - ${DRUPAL_CORE_PATH}/drupal:/app
     restart: no
 
   drupal:
-    image:
-    container_name: ${STACK_NAME}-site
+    build:
+      context: .docker/drupal
+      dockerfile: drupal.Dockerfile
+    container_name: ${PROJECT_NAME}-site
+    user: root
     ports:
       - 8080:80
     volumes:
-      - ${DRUPAL_CORE_PATH}/web:/var/www/html
+      # - ${DRUPAL_CORE_PATH}/web:/var/www/html
       - ${DRUPAL_CORE_PATH}:/opt/drupal
     depends_on:
       - mysql
@@ -27,7 +29,7 @@ services:
 
   mysql:
     image: mysql:latest
-    container_name: ${STACK_NAME}-mysql
+    container_name: ${PROJECT_NAME}-mysql
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
@@ -44,7 +46,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    container_name: ${STACK_NAME}-phpmyadmin
+    container_name: ${PROJECT_NAME}-phpmyadmin
     environment:
       PMA_HOST: mysql
       PMA_USER: ${PMA_USER}
@@ -58,4 +60,4 @@ services:
 
 networks:
   default:
-    name: ${STACK_NAME}-network
+    name: ${PROJECT_NAME}-network
