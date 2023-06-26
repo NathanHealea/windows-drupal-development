@@ -20,7 +20,32 @@ Getting Drupal set up on windows can be a daunting and a barrier to learning Dru
 Follow the installation instruction to setup and install Docker Desktop.
 
 [Docker - Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
+
+## Windows Subsystem Linux (WSL2)
+
+Follow the installation instruction to setup and install WLS.
+
 [Windows Subsystem Linux (WSL2) - Install Linux on Window with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+## Visual Studio Code
+
+Follow the installation instruction to setup and install Visual Studio code
+
+**\*NOTE:** Install VS Code on the windows side, ensuring you click `Add to PATH`.\*
+
+[Visual Studio Code - Download for Windows](https://code.visualstudio.com/)
+
+[Visual Studio Code - Developing in WSL](https://code.visualstudio.com/docs/remote/wsl)
+
+### Recommended VS Code Extensions:
+
+- [WSL - Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+
+## Windows Terminal (Optional)
+
+You can download Windows Terminal through the Microsoft Store.
+
+[Microsoft Store - Windows Terminal](https://www.microsoft.com/store/productId/9N0DX20HK701)
 
 # Installation
 
@@ -34,11 +59,11 @@ You should be opened up in your user home directory.
 
 3\) Check out the branch of the corresponding Drupal stack.
 
-| Drupal Version | Branch    | Checkout command            |
-| -------------- | --------- | --------------------------- |
-| v10            | drupal/10 | `$ git checkout drupal/v10` |
-| v9             | drupal/9  | `$ git checkout drupal/v9`  |
-| v8             | drupal/8  | `$ git checkout drupal/v8`  |
+| Drupal Version | Branch     | Checkout command            |
+| -------------- | ---------- | --------------------------- |
+| v10            | drupal-v10 | `$ git checkout drupal-v10` |
+| v9             | drupal-v9  | `$ git checkout drupal-v9`  |
+| v8             | drupal-v8  | `$ git checkout drupal-v8`  |
 
 4\) Update `.env` file
 
@@ -71,26 +96,6 @@ _\* should only be used for development environment to prevent issues with permi
 - PHP MyAdmin - [http://localhost:8090/](http://localhost:8090/)
 - MySQL - Accessible via localhost:3306
 
-## Setting Up MySQL
-
-Before setting up the Drupal installation, you will need to grant remote access permissions to the admin user.
-
-1\) Open an interactive terminal in to the `{PROJECT_NAME}-mysql` Docker container.
-
-`$ docker exec -it {PROJECT_NAME}-mysql /bin/bash`
-
-2\) Login to mysql using the `root` user credentials
-
-`$ mysql -u root -p `
-
-Use the `MYSQL_ROOT_PASSWORD` password defined in the `.env`.
-
-3\) Run the following command to grand remote access to the `{MYSQL_USER}`
-
-8\) Setup your Drupal instance.
-
-Once you have completed bring up the Docker stack, permission changes, and copy the `settings.php`, open your drupal site and finish the installation.
-
 # Folder Structure
 
 Once the Drupal Docker stack is running you will have the following ending directory.
@@ -104,14 +109,16 @@ Once the Drupal Docker stack is running you will have the following ending direc
 
 # Environment Variables
 
+[TBD]
+
 # Repo Branches
 
 ```
-├── main              # Minimal project files that can be applied to each drupal stack - not development ready
-│   ├── v10           # Drupal 10 development stack - ready for development
-│   │   ├── dev       # Drupal 10 stack development
+├── main                              # Minimal project files that can be applied to each drupal stack - not development ready
+│   ├── v10       (drupal-v10)        # Drupal 10 development stack - ready for development
+│   │   ├── dev   (drupal-v10-dev)    # Drupal 10 stack development
 │
-│   ├── v9            # Drupal 9 development stack files - ready for development
+│   ├── v9        (drupal-v9)         # Drupal 9 development stack files - ready for development
 │
-│   ├── v8            # Drupal 8 development stack files - ready for development
+│   ├── v8        (drupal-v8)         # Drupal 8 development stack files - ready for development
 ```

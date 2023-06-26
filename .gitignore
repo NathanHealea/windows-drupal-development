@@ -1,5 +1,5 @@
 # Project
-mysql/data/*
+mysql/*
 drupal/*
 
 # dotenv environment variable files
