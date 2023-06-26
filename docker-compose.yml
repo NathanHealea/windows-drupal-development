@@ -4,12 +4,13 @@ services:
   composer:
     image: composer:latest
     container_name: ${PROJECT_NAME}-composer
+    user: root
     environment:
       - COMPOSER_PROCESS_TIMEOUT=${COMPOSER_PROCESS_TIMEOUT}
       - COMPOSER_MEMORY_LIMIT=${COMPOSER_MEMORY_LIMIT}
-    command: composer create-project drupal/recommended-project --ignore-platform-reqs
+    command: composer create-project drupal/recommended-project drupal --ignore-platform-reqs
     volumes:
-      - ${DRUPAL_CORE_PATH}/drupal:/app
+      - ${DRUPAL_CORE_PATH}:/app/drupal
     restart: no
 
   drupal:
@@ -21,7 +22,6 @@ services:
     ports:
       - 8080:80
     volumes:
-      # - ${DRUPAL_CORE_PATH}/web:/var/www/html
       - ${DRUPAL_CORE_PATH}:/opt/drupal
     depends_on:
       - mysql
@@ -33,15 +33,14 @@ services:
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     ports:
       - 3306:3306
     expose:
       - 3306
     volumes:
-      - ${MYSQL_PATH}/data:/var/lib/mysql
-      - ${MYSQL_PATH}/init:/docker-entrypoint-initdb.d
+      - ${MYSQL_PATH}:/var/lib/mysql
     restart: always
 
   phpmyadmin:

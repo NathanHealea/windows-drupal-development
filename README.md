@@ -20,12 +20,19 @@ Getting Drupal set up on windows can be a daunting and a barrier to learning Dru
 Follow the installation instruction to setup and install Docker Desktop.
 
 [Docker - Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
+[Windows Subsystem Linux (WSL2) - Install Linux on Window with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 # Installation
 
-1\) Clone the repository
+1\) Open a terminal and start WSL
 
-2\) Check out the branch of the corresponding Drupal stack.
+You should be opened up in your user home directory.
+
+`/home/{user_name}`
+
+2\) Clone the repository
+
+3\) Check out the branch of the corresponding Drupal stack.
 
 | Drupal Version | Branch    | Checkout command            |
 | -------------- | --------- | --------------------------- |
@@ -33,7 +40,7 @@ Follow the installation instruction to setup and install Docker Desktop.
 | v9             | drupal/9  | `$ git checkout drupal/v9`  |
 | v8             | drupal/8  | `$ git checkout drupal/v8`  |
 
-3\) Update `.env` files
+4\) Update `.env` file
 
 Before being up your Drupal Docker stack.
 
@@ -43,9 +50,46 @@ Before being up your Drupal Docker stack.
 _\*see [environment variables]() for addition details._
 
 4\) Bring up Docker Stack
+
 Run the following command to bring up your docker stack
 
-`$ docker compose up`
+`$ docker compose up -d`
+
+5\) Copy the `default.settings.php` to `default.settings.php`
+
+`$ sudo cp drupal/web/sites/default/default.settings.php drupal/web/sites/default/settings.php`
+
+6\) Change Drupal Directory Permissions
+
+`$ sudo chmod -R 777 drupal`
+
+_\* should only be used for development environment to prevent issues with permissions._
+
+7\) Access Applications
+
+- Drupal - [http://localhost:8080/](http://localhost:8080/)
+- PHP MyAdmin - [http://localhost:8090/](http://localhost:8090/)
+- MySQL - Accessible via localhost:3306
+
+## Setting Up MySQL
+
+Before setting up the Drupal installation, you will need to grant remote access permissions to the admin user.
+
+1\) Open an interactive terminal in to the `{PROJECT_NAME}-mysql` Docker container.
+
+`$ docker exec -it {PROJECT_NAME}-mysql /bin/bash`
+
+2\) Login to mysql using the `root` user credentials
+
+`$ mysql -u root -p `
+
+Use the `MYSQL_ROOT_PASSWORD` password defined in the `.env`.
+
+3\) Run the following command to grand remote access to the `{MYSQL_USER}`
+
+8\) Setup your Drupal instance.
+
+Once you have completed bring up the Docker stack, permission changes, and copy the `settings.php`, open your drupal site and finish the installation.
 
 # Folder Structure
 
