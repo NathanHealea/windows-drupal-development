@@ -1,4 +1,4 @@
-FROM drupal:10.0.9-php8.2-apache
+FROM drupal:9.5.10-php8.2-apache
 
 # Install git, unzip
 RUN apt-get update && apt-get install -y git unzip vim
@@ -17,4 +17,4 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # Install Drush
-RUN composer require drush/drush
+# RUN composer require drush/drush

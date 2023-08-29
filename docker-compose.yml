@@ -17,6 +17,7 @@ services:
     build:
       context: .docker/drupal
       dockerfile: drupal.Dockerfile
+    image: wdd/${PROJECT_NAME}-image
     container_name: ${PROJECT_NAME}-site
     user: root
     ports:
