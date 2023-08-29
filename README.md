@@ -74,27 +74,50 @@ Before being up your Drupal Docker stack.
 
 _\*see [environment variables]() for addition details._
 
+<<<<<<< HEAD
 4\) Bring up Docker Stack
+=======
+5\) Bring up Docker Stack
+>>>>>>> main
 
 Run the following command to bring up your docker stack
 
 `$ docker compose up -d`
 
+<<<<<<< HEAD
 5\) Copy the `default.settings.php` to `default.settings.php`
 
 `$ sudo cp drupal/web/sites/default/default.settings.php drupal/web/sites/default/settings.php`
 
 6\) Change Drupal Directory Permissions
+=======
+6\) Copy the `default.settings.php` to `default.settings.php`
+
+`$ sudo cp drupal/web/sites/default/default.settings.php drupal/web/sites/default/settings.php`
+
+7\) Change Drupal Directory Permissions
+>>>>>>> main
 
 `$ sudo chmod -R 777 drupal`
 
 _\* should only be used for development environment to prevent issues with permissions._
 
+<<<<<<< HEAD
 7\) Access Applications
+=======
+8\) Access Applications
+>>>>>>> main
 
 - Drupal - [http://localhost:8080/](http://localhost:8080/)
 - PHP MyAdmin - [http://localhost:8090/](http://localhost:8090/)
 - MySQL - Accessible via localhost:3306
+<<<<<<< HEAD
+=======
+
+## Drupal installation
+
+In step 4 *Set up database* of the Drupal site configuration, you will need to change the host of the database from *localhost* to *mysql*
+>>>>>>> main
 
 # Folder Structure
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Project
 mysql/*
 drupal/*
@@ -24,3 +25,9 @@ drupal/*
 *.vsix
 
 
+=======
+drupal/
+mysql/
+
+.env
+>>>>>>> main
