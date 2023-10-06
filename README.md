@@ -118,15 +118,6 @@ Once the Drupal Docker stack is running you will have the following ending direc
 # Repo Branches
 
 ```
-<<<<<<< HEAD
-├── main              # Minimal project files that can be applied to each drupal stack
-│   ├── v10           # Drupal 10 development stack - ready for development
-│   │   ├── dev       # Drupal 10 stack development
-│
-│   ├── v9            # Drupal 9 development stack files - ready for development
-│
-│   ├── v8            # Drupal 8 development stack files - ready for development
-=======
 ├── main                              # Minimal project files that can be applied to each drupal stack - not development ready
 │   ├── v10       (drupal-v10)        # Drupal 10 development stack - ready for development
 │   │   ├── dev   (drupal-v10-dev)    # Drupal 10 stack development
@@ -134,5 +125,4 @@ Once the Drupal Docker stack is running you will have the following ending direc
 │   ├── v9        (drupal-v9)         # Drupal 9 development stack files - ready for development
 │
 │   ├── v8        (drupal-v8)         # Drupal 8 development stack files - ready for development
->>>>>>> ce83eb06e76e5bbeaeeb9135ae8645efb152f7b0
 ```
