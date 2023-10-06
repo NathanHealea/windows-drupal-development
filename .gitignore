@@ -1,0 +1,4 @@
+drupal/
+mysql/
+
+.env
