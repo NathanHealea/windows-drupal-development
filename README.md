@@ -20,7 +20,6 @@ Getting Drupal set up on windows can be a daunting and a barrier to learning Dru
 Follow the installation instruction to setup and install Docker Desktop.
 
 [Docker - Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
-[Windows Subsystem Linux (WSL2) - Install Linux on Window with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ## Windows Subsystem Linux (WSL2)
 
@@ -28,6 +27,15 @@ Follow the installation instruction to setup and install WLS.
 
 [Windows Subsystem Linux (WSL2) - Install Linux on Window with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
+<<<<<<< HEAD
+## Windows Subsystem Linux (WSL2)
+
+Follow the installation instruction to setup and install WLS.
+
+[Windows Subsystem Linux (WSL2) - Install Linux on Window with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+=======
+>>>>>>> 101aadee5ad118db8a19bede5e7a6573d8628fcd
 ## Visual Studio Code
 
 Follow the installation instruction to setup and install Visual Studio code
@@ -63,7 +71,15 @@ You should be opened up in your user home directory.
 =======
 >>>>>>> drupal-v10
 
+<<<<<<< HEAD
 `/home/{user_name}`
+=======
+| Drupal Version | Branch     | Checkout command            |
+| -------------- | ---------- | --------------------------- |
+| v10            | drupal-v10 | `$ git checkout drupal-v10` |
+| v9             | drupal-v9  | `$ git checkout drupal-v9`  |
+| v8             | drupal-v8  | `$ git checkout drupal-v8`  |
+>>>>>>> 101aadee5ad118db8a19bede5e7a6573d8628fcd
 
 <<<<<<< HEAD
 =======
@@ -112,10 +128,6 @@ _\* should only be used for development environment to prevent issues with permi
 - Drupal - [http://localhost:8080/](http://localhost:8080/)
 - PHP MyAdmin - [http://localhost:8090/](http://localhost:8090/)
 - MySQL - Accessible via localhost:3306
-
-## Drupal installation
-
-In step 4 *Set up database* of the Drupal site configuration, you will need to change the host of the database from *localhost* to *mysql*
 
 # Folder Structure
 
