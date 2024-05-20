@@ -9,6 +9,11 @@
   <img src="https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=ffffff&style=for-the-badge&labelColor=496ED" />
 </p>
 
+
+<h1 align="center"> ⚠️ ---- Archived ---- ⚠️ </h1>
+
+<p align="center"> This project was orginally created to establish a standared way of building drupal environments on Windows using Docker. However I have discoved a technology <a href="https://lando.dev/">Lando</a> to be a more compelete project that I have used both professionally and personally. Lando provides many features that I would nevery have time to implement. </p>
+
 # Introduction
 
 Getting Drupal set up on windows can be a daunting and a barrier to learning Drupal. WDD aims to simplify the process to get developers up and running quickly.
